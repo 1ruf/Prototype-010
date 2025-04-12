@@ -27,8 +27,6 @@ public class CharacterMovement : MonoBehaviour, IEntityComponent
     private float _verticalVelocity;
     private Vector3 _movementDirection;
 
-    private Vector3 _autoMovement;
-
     private Entity _entity;
 
     public void SetMovementDirection(Vector2 movementInput)

@@ -53,6 +53,10 @@ public class Gun : MonoBehaviour
                 currentBulletCnt--;
             }
         }
+        else
+        {
+            result = "ÂûÄ®(...)";
+        }
         HammerCocked = true;
         print(result);
     }
