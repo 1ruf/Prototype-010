@@ -11,7 +11,7 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     public event Action OnInteractPressed;
 
     public event Action<bool> OnAimInteracted;
-    public event Action OnTriggerPressed;
+    public event Action<bool> OnTriggerPressed;
     public event Action OnCockingPressed;
     public event Action OnChangemagPressed;
 
@@ -71,7 +71,9 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     public void OnTrigger(InputAction.CallbackContext context)  //น฿ป็
     {
         if (context.performed)
-            OnTriggerPressed?.Invoke();
+            OnTriggerPressed?.Invoke(true);
+        if (context.canceled)
+            OnTriggerPressed?.Invoke(false);
     }
 
     public void OnAim(InputAction.CallbackContext context)
