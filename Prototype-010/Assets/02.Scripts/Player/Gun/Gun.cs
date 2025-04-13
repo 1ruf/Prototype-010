@@ -9,9 +9,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private int MaxbulletCnt = 30;
     [SerializeField] private bool autoMode;
     [SerializeField] private int currentBulletCnt = 0;
-    private bool isBulletLoaded;
+    [SerializeField] private bool isBulletLoaded;
 
-    private bool HammerCocked;
+    [SerializeField] private bool HammerCocked;
 
     private bool triggerPulling;
 
