@@ -14,16 +14,7 @@ public class FirstPersonCamera : MonoBehaviour
 
     private float _xRotation = 0f;
     private float aimValue = 1f;
-    private void Awake()
-    {
-        playerInput.OnAimInteracted += HandleAim;//나중에 fsm해서 빼기
-    }
-    private void OnDestroy()
-    {
-        playerInput.OnAimInteracted -= HandleAim;
-    }
-
-    private void HandleAim(bool value)
+    public void HandleAim(bool value)
     {
         if (!canAim)
         {

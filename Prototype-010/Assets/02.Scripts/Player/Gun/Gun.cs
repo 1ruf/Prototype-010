@@ -1,10 +1,16 @@
 using System;
 using System.Collections;
+using System.Security.Claims;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Gun : MonoBehaviour
 {
     [SerializeField] private PlayerInputSO inputSO;
+
+    [SerializeField] private FirstPersonAnimator animator;
+
+    [SerializeField] private FirstPersonCamera _mainCam;
 
     [SerializeField] private int MaxbulletCnt = 30;
     [SerializeField] private bool autoMode;
@@ -13,12 +19,16 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private bool HammerCocked;
 
+    [SerializeField] private float aimMultipleVal = 0.3f;
+
+
     private bool triggerPulling;
 
     private string result;
 
     private void Awake()
     {
+        inputSO.OnAimInteracted += HandleAimming;//³ªÁß¿¡ fsmÇØ¼­ »©±â
         inputSO.OnTriggerPressed += HandleTrigger;
         inputSO.OnCockingPressed += HandleCocking;
         inputSO.OnChangemagPressed += HandleChangeMag;
@@ -55,7 +65,7 @@ public class Gun : MonoBehaviour
         }
         else
         {
-            result = "ÂûÄ®(...)";
+            result = "ÂûÄ¬(...)";
         }
         HammerCocked = true;
         print(result);
@@ -63,8 +73,15 @@ public class Gun : MonoBehaviour
 
     private void OnDestroy()
     {
+        inputSO.OnAimInteracted -= HandleAimming;
         inputSO.OnTriggerPressed -= HandleTrigger;
         inputSO.OnCockingPressed -= HandleCocking;
+    }
+
+    private void HandleAimming(bool val)
+    {
+        animator.SetParam("Aim",val);
+        _mainCam.HandleAim(val);
     }
 
     private void HandleTrigger(bool isPressing)
