@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private FirstPersonAnimator animator;
 
     [SerializeField] private FirstPersonCamera _mainCam;
+    [SerializeField] private Muzzel muzzel;
 
     [SerializeField] private int MaxbulletCnt = 30;
     [SerializeField] private bool autoMode;
@@ -19,12 +20,11 @@ public class Gun : MonoBehaviour
 
     [SerializeField] private bool HammerCocked;
 
-    [SerializeField] private float aimMultipleVal = 0.3f;
+    private bool _triggerPulling;
 
+    private string _result;
 
-    private bool triggerPulling;
-
-    private string result;
+    private bool _isAimming;
 
     private void Awake()
     {
@@ -53,22 +53,22 @@ public class Gun : MonoBehaviour
         {
             if (isBulletLoaded)
             {
-                result = "¹ß»çµÇÁö ¾ÊÀº ÃÑ¾ËÀÌ ÇÑ¹ß ¹Ù´Ú¿¡ ¶³¾îÁ³´Ù.";
+                _result = "¹ß»çµÇÁö ¾ÊÀº ÃÑ¾ËÀÌ ÇÑ¹ß ¹Ù´Ú¿¡ ¶³¾îÁ³´Ù.";
                 currentBulletCnt--;
             }
             else
             {
-                result = "ÂûÄ¬!(ÃÑ¾ËÀÌ ¾à½Ç·Î ÀåÀüµÊ.)";
+                _result = "ÂûÄ¬!(ÃÑ¾ËÀÌ ¾à½Ç·Î ÀåÀüµÊ.)";
                 isBulletLoaded = true;
                 currentBulletCnt--;
             }
         }
         else
         {
-            result = "ÂûÄ¬(...)";
+            _result = "ÂûÄ¬(...)";
         }
         HammerCocked = true;
-        print(result);
+        print(_result);
     }
 
     private void OnDestroy()
@@ -82,12 +82,13 @@ public class Gun : MonoBehaviour
     {
         animator.SetParam("Aim",val);
         _mainCam.HandleAim(val);
+        _isAimming = val;
     }
 
     private void HandleTrigger(bool isPressing)
     {
-        triggerPulling = isPressing;
-        if (triggerPulling)
+        _triggerPulling = isPressing;
+        if (_triggerPulling)
         {
             Fire();
         }
@@ -97,13 +98,17 @@ public class Gun : MonoBehaviour
     {
         if (!HammerCocked)
         {
-            result = ". . .";
+            _result = ". . .";
         }
-        else if (triggerPulling)
+        else if (_triggerPulling)
         {
             if(isBulletLoaded)
             {
-                result = "ÅÁ!!!";
+                muzzel.FireEffect();
+
+                animator.SetParam("Fire");
+
+                _result = "ÅÁ!!!";
                 currentBulletCnt--;
                 isBulletLoaded = false;
                 if (currentBulletCnt > 0)
@@ -111,13 +116,13 @@ public class Gun : MonoBehaviour
             }
             else
             {
-                result = "Æ½.";
+                _result = "Æ½.";
                 HammerCocked = false;
             }
         }
-        print(result);
+        print(_result);
 
-        if (autoMode)
+        if (_triggerPulling)
             StartCoroutine(Refire(0.1f));
     }
     private IEnumerator Refire(float time)

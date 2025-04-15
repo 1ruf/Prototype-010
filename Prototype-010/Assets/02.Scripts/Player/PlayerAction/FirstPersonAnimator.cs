@@ -19,4 +19,7 @@ public class FirstPersonAnimator : MonoBehaviour
     public void SetParam(string name, bool value) => _animator.SetBool(name, value);
     public void SetParam(string name, int value) => _animator.SetInteger(name, value);
     public void SetParam(string name) => _animator.SetTrigger(name);
+
+    public void PlayerAnimation(string name) => _animator.Play(name);
+    public void StopAnmation() => _animator.StopPlayback();
 }
