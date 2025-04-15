@@ -14,6 +14,8 @@ public class FirstPersonCamera : MonoBehaviour
 
     private float _xRotation = 0f;
     private float aimValue = 1f;
+
+    private float recoildX;
     public void HandleAim(bool value)
     {
         if (!canAim)
@@ -40,5 +42,15 @@ public class FirstPersonCamera : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(_xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+
+        recoildX = 0;
+    }
+
+    public void AddCameraRotate(float x,float y)
+    {
+        print(x + "," + y);
+        recoildX = x;
+        Quaternion rotate = playerBody.transform.localRotation;
+        playerBody.Rotate(rotate.x, rotate.y + y, rotate.x);
     }
 }

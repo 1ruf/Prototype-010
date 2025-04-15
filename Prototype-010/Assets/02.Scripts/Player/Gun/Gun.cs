@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private FirstPersonCamera _mainCam;
     [SerializeField] private Muzzel muzzel;
 
+    [SerializeField] private float recoilMulti = 0.3f;
     [SerializeField] private int MaxbulletCnt = 30;
     [SerializeField] private bool autoMode;
     [SerializeField] private int currentBulletCnt = 0;
@@ -106,8 +107,9 @@ public class Gun : MonoBehaviour
             {
                 muzzel.FireEffect();
 
-                animator.SetParam("Fire");
-
+                //animator.SetParam("Fire");
+                animator.PlayerAnimation("IdleFire");
+                _mainCam.AddCameraRotate(UnityEngine.Random.Range(1f, 10f),UnityEngine.Random.Range(-recoilMulti, recoilMulti));
                 _result = "≈¡!!!";
                 currentBulletCnt--;
                 isBulletLoaded = false;
