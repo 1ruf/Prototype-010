@@ -3,6 +3,7 @@ using System.Collections;
 using System.Security.Claims;
 using UnityEngine;
 using UnityEngine.UIElements;
+//ìˆ˜í•™ì˜í–‰
 
 public class Gun : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
-        inputSO.OnAimInteracted += HandleAimming;//³ªÁß¿¡ fsmÇØ¼­ »©±â
+        inputSO.OnAimInteracted += HandleAimming;//ë‚˜ì¤‘ì— fsmí•´ì„œ ë¹¼ê¸°
         inputSO.OnTriggerPressed += HandleTrigger;
         inputSO.OnCockingPressed += HandleCocking;
         inputSO.OnChangemagPressed += HandleChangeMag;
@@ -37,7 +38,7 @@ public class Gun : MonoBehaviour
 
     private void HandleChangeMag()
     {
-        print("ÅºÃ¢ÀÌ Á¦°ÅµÊ.");
+        print("íƒ„ì°½ì´ ì œê±°ë¨.");
         StartCoroutine(ChangingMag(3f));
     }
     private IEnumerator ChangingMag(float time)
@@ -45,7 +46,7 @@ public class Gun : MonoBehaviour
         currentBulletCnt = 0;
         yield return new WaitForSeconds(time);
         currentBulletCnt = MaxbulletCnt;
-        print("»õ·Î¿î ÅºÃ¢ÀÌ »ðÀÔµÊ.");
+        print("ìƒˆë¡œìš´ íƒ„ì°½ì´ ì‚½ìž…ë¨.");
     }
 
     private void HandleCocking()
@@ -54,19 +55,19 @@ public class Gun : MonoBehaviour
         {
             if (isBulletLoaded)
             {
-                _result = "¹ß»çµÇÁö ¾ÊÀº ÃÑ¾ËÀÌ ÇÑ¹ß ¹Ù´Ú¿¡ ¶³¾îÁ³´Ù.";
+                _result = "ë°œì‚¬ë˜ì§€ ì•Šì€ ì´ì•Œì´ í•œë°œ ë°”ë‹¥ì— ë–¨ì–´ì¡Œë‹¤.";
                 currentBulletCnt--;
             }
             else
             {
-                _result = "ÂûÄ¬!(ÃÑ¾ËÀÌ ¾à½Ç·Î ÀåÀüµÊ.)";
+                _result = "ì°°ì¹µ!(ì´ì•Œì´ ì•½ì‹¤ë¡œ ìž¥ì „ë¨.)";
                 isBulletLoaded = true;
                 currentBulletCnt--;
             }
         }
         else
         {
-            _result = "ÂûÄ¬(...)";
+            _result = "ì°°ì¹µ(...)";
         }
         HammerCocked = true;
         print(_result);
@@ -110,7 +111,7 @@ public class Gun : MonoBehaviour
                 //animator.SetParam("Fire");
                 animator.PlayerAnimation("IdleFire");
                 _mainCam.AddCameraRotate(UnityEngine.Random.Range(1f, 10f),UnityEngine.Random.Range(-recoilMulti, recoilMulti));
-                _result = "ÅÁ!!!";
+                _result = "íƒ•!!!";
                 currentBulletCnt--;
                 isBulletLoaded = false;
                 if (currentBulletCnt > 0)
@@ -118,7 +119,7 @@ public class Gun : MonoBehaviour
             }
             else
             {
-                _result = "Æ½.";
+                _result = "í‹±.";
                 HammerCocked = false;
             }
         }
