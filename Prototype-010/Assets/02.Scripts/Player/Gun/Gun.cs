@@ -3,7 +3,6 @@ using System.Collections;
 using System.Security.Claims;
 using UnityEngine;
 using UnityEngine.UIElements;
-//수학영행
 
 public class Gun : MonoBehaviour
 {
