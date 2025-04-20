@@ -107,8 +107,7 @@ public class Gun : MonoBehaviour
             {
                 muzzel.FireEffect();
 
-                //animator.SetParam("Fire");
-                animator.PlayerAnimation("IdleFire");
+                animator.SetParam("Fire");
                 _mainCam.AddCameraRotate(UnityEngine.Random.Range(1f, 10f),UnityEngine.Random.Range(-recoilMulti, recoilMulti));
                 _result = "≈¡!!!";
                 currentBulletCnt--;
