@@ -80,7 +80,7 @@ public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions
     {
         if (context.performed)
             OnAimInteracted?.Invoke(true);
-        if(context.canceled)
+        if (context.canceled)
             OnAimInteracted?.Invoke(false);
     }
 
