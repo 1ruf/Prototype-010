@@ -43,9 +43,11 @@ public class CharacterMovement : MonoBehaviour, IEntityComponent
 
     private void CalculateMovement()
     {
-        Vector3 moveDir = (_entity.transform.right * _movementDirection.x + _entity.transform.forward * _movementDirection.z).normalized;
+        Vector3 targetVelocity = (_entity.transform.right * _movementDirection.x + _entity.transform.forward * _movementDirection.z).normalized
+                                 * moveSpeed * _sprintValue * Time.fixedDeltaTime;
 
-        _velocity = moveDir * moveSpeed * _sprintValue * Time.fixedDeltaTime;
+        // Smoothly interpolate _velocity towards targetVelocity
+        _velocity = Vector3.Lerp(_velocity, targetVelocity, 0.1f); // 0.1f is the smoothing factor, adjust as needed
     }
 
 
