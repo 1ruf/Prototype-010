@@ -31,15 +31,19 @@ public class Sniper : MonoBehaviour
 
     private void Fire()
     {
-        GameObject bullet = Instantiate(bulletPrefab,null);
-        bullet.transform.position = muzzel.position;
-        bullet.transform.rotation = muzzel.rotation;
-
+        SummonBullet();
         gunImpulse.GenerateImpulseWithForce(0.1f);
         Quaternion curRotation = transform.rotation;
         curRotation.x += -0.025f;
         transform.rotation = curRotation;
         StartCoroutine(Revert());
+    }
+
+    private void SummonBullet()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, null);
+        bullet.transform.position = muzzel.position;
+        bullet.transform.rotation = muzzel.rotation;
     }
 
     private IEnumerator Revert()

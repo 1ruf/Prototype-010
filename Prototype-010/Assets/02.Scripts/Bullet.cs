@@ -14,4 +14,10 @@ public class Bullet : MonoBehaviour
     {
         _rigid.AddForce(transform.forward * speed, ForceMode.Force);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("HIT:" + collision.gameObject.name);
+        //Destroy(gameObject);
+    }
 }
