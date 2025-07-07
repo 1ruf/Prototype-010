@@ -20,8 +20,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         print("HIT:" + collision.gameObject.name);
-        
-        //Destroy(gameObject);
+        CheckRecochet(collision);
     }
 
     private void CheckRecochet(Collision target)
@@ -38,6 +37,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
+            print("recochet fail");
             Destroy(gameObject);
         }
     }    

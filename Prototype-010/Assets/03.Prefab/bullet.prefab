@@ -77,7 +77,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 2
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -95,13 +95,13 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.2
+        time: 1
         value: 0
-        inSlope: -0.69813764
-        outSlope: -0.69813764
+        inSlope: -0.3647818
+        outSlope: -0.3647818
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.16334164
+        inWeight: 0.16832906
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -281,8 +281,8 @@ GameObject:
   - component: {fileID: 6695755976131612282}
   - component: {fileID: 6109911244151922988}
   - component: {fileID: 1788984106558293807}
-  - component: {fileID: 463072192371795476}
   - component: {fileID: -5205139447317648191}
+  - component: {fileID: 7561311626266349566}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Untagged
@@ -373,7 +373,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 777
---- !u!54 &463072192371795476
+  recochetAngle: 85
+--- !u!136 &-5205139447317648191
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456505875888455031}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0064617535
+  m_Height: 0.04435851
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0.01}
+--- !u!54 &7561311626266349566
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,27 +423,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!136 &-5205139447317648191
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7456505875888455031}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.0064617535
-  m_Height: 0.04435851
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.01}
+  m_CollisionDetection: 0
