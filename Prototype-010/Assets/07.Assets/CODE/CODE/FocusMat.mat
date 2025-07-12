@@ -31,7 +31,7 @@ Material:
     m_Floats:
     - _Max: 1
     - _Min: 0.1
-    - _Mult: 0.38418278
+    - _Mult: 0.3841826
     - _XPos: 0.5
     - _YPos: 0.5
     m_Colors: []

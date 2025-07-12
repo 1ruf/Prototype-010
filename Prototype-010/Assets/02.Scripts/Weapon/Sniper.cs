@@ -32,9 +32,9 @@ public class Sniper : MonoBehaviour
     private void Fire()
     {
         SummonBullet();
-        gunImpulse.GenerateImpulseWithForce(0.1f);
+        gunImpulse.GenerateImpulseWithForce(0.15f);
         Quaternion curRotation = transform.rotation;
-        curRotation.x += -0.025f;
+        curRotation.x += -0.03f;
         transform.rotation = curRotation;
         StartCoroutine(Revert());
     }
@@ -48,7 +48,7 @@ public class Sniper : MonoBehaviour
 
     private IEnumerator Revert()
     {
-        for(int i = 0;i < 20;++i)
+        for(int i = 0;i < 25;++i)
         {
             yield return new WaitForSeconds(0.01f);
             Quaternion curRotation = transform.rotation;
