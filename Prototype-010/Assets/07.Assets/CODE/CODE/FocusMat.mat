@@ -31,9 +31,9 @@ Material:
     m_Floats:
     - _Max: 1
     - _Min: 0.1
-    - _Mult: 0.3841826
-    - _XPos: 0.5
-    - _YPos: 0.5
+    - _Mult: 0.35965088
+    - _XPos: 0.2792759
+    - _YPos: 0.49499
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
